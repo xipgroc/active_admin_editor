@@ -32,6 +32,9 @@ module ActiveAdmin
       # action which should handle file upload
       attr_accessor :uploader_action_path
 
+      # paths to client side templates in the asset pipeline
+      attr_accessor :template_paths
+
       def storage_dir
         @storage_dir ||= 'uploads'
       end
@@ -56,6 +59,14 @@ module ActiveAdmin
 
       def uploader_action_path=(action)
         @uploader_action_path = (action.nil?) ? action : "/#{ action.to_s.gsub(/(^\/|\/$)/, '') }"
+      end
+
+      def template_paths
+        defaults = {
+          toolbar: 'active_admin/editor/templates/toolbar',
+          uploader: 'active_admin/editor/templates/uploader'
+        }
+        @template_paths ? @template_paths.reverse_merge!(defaults) : defaults
       end
     end
   end
