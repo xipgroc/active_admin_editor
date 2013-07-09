@@ -19,8 +19,8 @@
   <% end %>
 
   <% if options = ActiveAdmin::Editor.configuration.custom_options %>
-  config.custom_options = <%= options.to_json %>
+  config.customOptions = <%= options.to_json %>
   <% else %>
-  config.custom_options = null
+  config.customOptions = null
   <% end %>
 })(window)
