@@ -13,6 +13,7 @@ describe ActiveAdmin::Editor.configuration do
       toolbar: 'active_admin/editor/templates/toolbar',
       uploader: 'active_admin/editor/templates/uploader'
     }
+    configuration.custom_options = nil
   end
 
   context 'by default' do
@@ -25,6 +26,7 @@ describe ActiveAdmin::Editor.configuration do
       toolbar: 'active_admin/editor/templates/toolbar',
       uploader: 'active_admin/editor/templates/uploader'
     }) }
+    its(:custom_options)    { should be_nil }
   end
 
   describe '.s3_configured?' do

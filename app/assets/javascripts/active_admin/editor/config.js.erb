@@ -17,4 +17,10 @@
   <% else %>
     config.uploader_action_path = null
   <% end %>
+
+  <% if options = ActiveAdmin::Editor.configuration.custom_options %>
+  config.custom_options = <%= options.to_json %>
+  <% else %>
+  config.custom_options = null
+  <% end %>
 })(window)

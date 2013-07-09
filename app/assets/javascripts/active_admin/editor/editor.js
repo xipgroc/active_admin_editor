@@ -74,11 +74,17 @@
    * Initializes the wysihtml5 editor for the textarea.
    */
   Editor.prototype._attachEditor = function() {
-    this._editor = new wysihtml5.Editor(this.$textarea.attr('id'), {
+    options = {
       toolbar: this.$toolbar.attr('id'),
       stylesheets: config.stylesheets,
       parserRules: config.parserRules
-    })
+    }
+
+    if (config.customOptions !== null) {
+      for (var attrname in config.customOptions) { options[attrname] = config.customOptions[attrname] }
+    }
+
+    this._editor = new wysihtml5.Editor(this.$textarea.attr('id'), options)
   }
 
   /**
