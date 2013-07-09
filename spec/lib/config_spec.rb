@@ -8,6 +8,7 @@ describe ActiveAdmin::Editor.configuration do
     configuration.aws_access_secret = nil
     configuration.s3_bucket = nil
     configuration.storage_dir = 'uploads'
+    configuration.custom_options = nil
   end
 
   context 'by default' do
@@ -15,8 +16,9 @@ describe ActiveAdmin::Editor.configuration do
     its(:aws_access_secret) { should be_nil }
     its(:s3_bucket)         { should be_nil }
     its(:storage_dir)       { should eq 'uploads' }
+    its(:custom_options)    { should be_nil }
   end
-  
+
   describe '.s3_configured?' do
     subject { configuration.s3_configured? }
 
@@ -26,7 +28,7 @@ describe ActiveAdmin::Editor.configuration do
 
       it { should be_false }
     end
-    
+
     context 'when key, secret and bucket are set' do
       before do
         configuration.aws_access_key_id = 'foo'
@@ -51,4 +53,5 @@ describe ActiveAdmin::Editor.configuration do
       expect(subject).to eq 'uploads'
     end
   end
+
 end

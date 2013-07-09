@@ -29,6 +29,9 @@ module ActiveAdmin
       # wysiwyg stylesheets that get included in the backend and the frontend.
       attr_accessor :stylesheets
 
+      # wysiwyg stylesheets that get included in the backend and the frontend.
+      attr_accessor :custom_options
+
       def storage_dir
         @storage_dir ||= 'uploads'
       end
